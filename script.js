@@ -1,25 +1,22 @@
 function stringChop(str, size) {
-  // your code here
-	const charCount = {};
-
-	
-  for (let char of str) {
-    charCount[char] = (charCount[char] || 0) + 1;
+  // If the string is null or size is not a positive integer, return an empty array
+  if (!str || size <= 0) {
+    return [];
   }
 
- 
-  for (let char of str) {
-    if (charCount[char] === 1) {
-      return char;
-    }
+  // Initialize an array to store the chunks
+  const chunks = [];
+
+  // Loop through the string, slicing it into chunks of the specified size
+  for (let i = 0; i < str.length; i += size) {
+    chunks.push(str.slice(i, i + size));
   }
 
-  
-  return null;
-
+  return chunks;
 }
 
 // Do not change the code below
-const str = prompt("Enter String.");
-//const size = prompt("Enter Chunk Size.");
+const str = prompt("Enter String:");
+const size = parseInt(prompt("Enter Chunk Size:"), 10);
 alert(stringChop(str, size));
+
